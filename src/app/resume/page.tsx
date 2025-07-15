@@ -1,23 +1,21 @@
 ﻿"use client";
 
+import "../resume.css";
 import React from 'react';
-import './resume.css'; // Import your CSS file for styling
-import Box from '@mui/material/Box';
 
-export default function ResumePage() {
-
+export default function Resume() {
 
     return (
         <div className="resum-body">
             <div className="resume-container">
                 <div className="sidebar">
-                    <h1 className="text-center">Poovarasan M</h1>
-                    <p className="text-center text-lg mb-4 text-gray-300">Full Stack Developer...</p>
+                    <h2 className="text-center">Poovarasan M</h2>
 
                     <div className="contact-info mb-6">
                         <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" /></svg> Bengaluru</p>
                         <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.46.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z" /></svg> +91-9344146625</p>
                         <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg> poovarasanm0909@gmail.com</p>
+                        <p className="text-center text-lg mb-4 text-gray-300">Full Stack Developer</p>
                     </div>
 
                     <h2 className="mb-4">🔗 Links</h2>
@@ -106,7 +104,7 @@ export default function ResumePage() {
                 <div className="main-content">
 
                     <h2 className="mb-4">📄 Summary</h2>
-                    <p className="mb-6">Full Stack Developer with 2.6 years of experience in developing, designing and deploying scalable web applications. Proficient in frontend and backend technologies including Java, Spring Boot, React.js, TypeScript, and PostgreSQL. Skilled in building robust admin interfaces using React-Admin. Contributed to fintech and AI-based projects, particularly in the Merchant Cash Advance (MCA) domain, improving financial workflows and overall system performance. Passionate about clean code, performance optimization, and business-driven development.</p>
+                    <p>Full Stack Developer with 2.6 years of experience in developing, designing and deploying scalable web applications. Proficient in frontend and backend technologies including Java, Spring Boot, React.js, TypeScript, and PostgreSQL. Skilled in building robust admin interfaces using React-Admin. Contributed to fintech and AI-based projects, particularly in the Merchant Cash Advance (MCA) domain, improving financial workflows and overall system performance. Passionate about clean code, performance optimization, and business-driven development.</p>
 
                     <h2 className="mb-4">💼 Experience</h2>
                     <div className="experience-item mb-6">
