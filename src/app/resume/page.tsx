@@ -19,7 +19,7 @@ export default function Resume() {
                     </div>
 
                     <h2 className="mb-4">🔗 Links</h2>
-                        <ul className="list-none pl-0">
+                    <ul className="list-none pl-0">
                         <li><a href="https://linkedin.com/in/poovarasan-m-50341b20b" target="_blank" rel="noopener noreferrer">LinkedIn: linkedin.com/in/poovarasan-m-50341b20b</a></li>
                         <li><a href="https://github.com/Poovarasan0909" target="_blank" rel="noopener noreferrer">GitHub: github.com/Poovarasan0909</a></li>
                         <li><a href="https://poovarasan.dev" target="_blank" rel="noopener noreferrer">Portfolio: poovarasan.dev</a></li>
@@ -104,9 +104,9 @@ export default function Resume() {
                 <div className="main-content">
 
                     <h2 className="mb-4">📄 Summary</h2>
-                    <p>Full Stack Developer with 2.6 years of experience in developing, designing and deploying scalable web applications. Proficient in frontend and backend technologies including Java, Spring Boot, React.js, TypeScript, and PostgreSQL. Skilled in building robust admin interfaces using React-Admin. Contributed to fintech and AI-based projects, particularly in the Merchant Cash Advance (MCA) domain, improving financial workflows and overall system performance. Passionate about clean code, performance optimization, and business-driven development.</p>
+                    <p className="description">Full Stack Developer with 2.6 years of experience in developing, designing and deploying scalable web applications. Proficient in frontend and backend technologies including Java, Spring Boot, React.js, TypeScript, and PostgreSQL. Skilled in building robust admin interfaces using React-Admin. Contributed to fintech and AI-based projects, particularly in the Merchant Cash Advance (MCA) domain, improving financial workflows and overall system performance. Passionate about clean code, performance optimization, and business-driven development.</p>
 
-                    <h2 className="mb-4">💼 Experience</h2>
+                    <h2 className="mb-2">💼 Experience</h2>
                     <div className="experience-item mb-6">
                         <h3>MAHASWAMI SOFTWARE PRIVATE LIMITED</h3>
                         <h4>Full Stack Developer | Dec 2021 – Present</h4>
