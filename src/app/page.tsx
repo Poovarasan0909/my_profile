@@ -1,10 +1,10 @@
 ﻿"use client"
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion'; // Import motion for animations
+import { motion, easeInOut } from 'framer-motion'; // Import motion for animations
 
 // Lucide React icons
-import { Home, User, Code, Folder, Mail, Linkedin, Github, Twitter, ExternalLink, Sun, Moon, FileText } from 'lucide-react'; // Added FileText icon
+import { Home, User, Code, Folder, Mail, Linkedin, Github, ExternalLink, Sun, Moon, FileText } from 'lucide-react'; // Added FileText icon
 
 // Main App Component
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
     const [darkMode, setDarkMode] = useState(false);
 
     // Smooth scroll to section
-    const scrollToSection = (sectionId) => {
+    const scrollToSection = (sectionId: any) => {
         const section = document.getElementById(sectionId);
         if (section) {
             section.scrollIntoView({ behavior: 'smooth' });
@@ -34,7 +34,7 @@ const App = () => {
                     }
                 }
             }
-        };
+        }
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -45,7 +45,7 @@ const App = () => {
         setDarkMode(!darkMode);
         document.documentElement.classList.toggle('dark');
     };
-
+        
     return (
         <div className={`min-h-screen font-inter ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-800'}`}>
             {/* Dark Mode Toggle */}
@@ -81,7 +81,7 @@ const App = () => {
 };
 
 // Navigation Item Component
-const NavItem = ({ icon, label, sectionId, activeSection, onClick }) => (
+const NavItem = ({ icon, label, sectionId, activeSection, onClick }: any) => (
     <button
         onClick={() => onClick(sectionId)}
         className={`relative flex items-center justify-center p-3 rounded-full transition-all duration-300 group
@@ -113,7 +113,7 @@ const HeroSection = () => {
             transition: {
                 staggerChildren: 0.2, // Delay between child animations
                 duration: 0.8,
-                ease: "easeOut"
+                ease: easeInOut
             }
         }
     };
@@ -189,7 +189,7 @@ const HeroSection = () => {
 };
 
 // Social Link Component
-const SocialLink = ({ icon, href, label }) => (
+const SocialLink = ({ icon, href, label }:any) => (
     <a
         href={href}
         target="_blank"
@@ -258,7 +258,7 @@ const SkillsSection = () => {
 };
 
 // Skill Card Component
-const SkillCard = ({ skill }) => (
+const SkillCard = ({ skill }:any) => (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
         <img src={skill.icon} alt={skill.name} className="w-1 mb-4" />
         <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{skill.name}</h3>
@@ -304,14 +304,14 @@ const ProjectsSection = () => {
 };
 
 // Project Card Component
-const ProjectCard = ({ project }) => (
+const ProjectCard = ({ project }:any) => (
     <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
         <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
         <div className="p-6 flex-grow">
             <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">{project.title}</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
             <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech, index) => (
+                {project.technologies?.map((tech:any, index:any) => (
                     <span key={index} className="px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 text-sm font-medium rounded-full">
                         {tech}
                     </span>
@@ -366,7 +366,7 @@ const ContactSection = () => (
 );
 
 // Contact Info Item Component
-const ContactInfoItem = ({ icon, text, link }) => (
+const ContactInfoItem = ({ icon, text, link }:any) => (
     <a
         href={link}
         target="_blank"
