@@ -18,7 +18,7 @@ const SkillsSection = () => {
     return (
         <section id="skills" className="min-h-screen flex items-center p-8 bg-gray-100 dark:bg-gray-900 rounded-3xl shadow-xl my-16">
             <div className="container mx-auto max-w-6xl text-center">
-                <h2 className="font-bold mb-12 text-blue-600 dark:text-blue-400">My Skills</h2>
+                <h2 className="text-4xl font-bold mb-12 text-blue-600 dark:text-blue-400">My Skills</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {skills.map((skill, index) => (
                         <SkillCard key={index} skill={skill} />
