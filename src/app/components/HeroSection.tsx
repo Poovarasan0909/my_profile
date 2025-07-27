@@ -2,7 +2,7 @@
 import { easeInOut, motion } from 'framer-motion';
 import { Linkedin, Github, FileText } from 'lucide-react'; // Added FileText icon
 
-const HeroSection = ({darkMode }) => {
+const HeroSection = ({ darkMode }: { darkMode: boolean }) => {
     // Data extracted from Poovarasan's resume
     const name = "Poovarasan";
     const title = "Full Stack Developer | Java | Spring Boot | React.js | TypeScript | PostgreSQL";
