@@ -74,7 +74,7 @@ const App = () => {
 
             {/* Main Content Area */}
             <main className="content-area">
-                <HeroSection darkMode={darkMode} />
+                <HeroSection/>
                 <AboutSection />
                 <SkillsSection />
                 <ProjectsSection />
