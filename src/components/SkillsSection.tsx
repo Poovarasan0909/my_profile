@@ -16,10 +16,10 @@ const SkillsSection = () => {
     ];
 
     return (
-        <section id="skills" className="min-h-screen flex items-center p-8 bg-gray-100 dark:bg-gray-900 rounded-3xl shadow-xl my-16">
-            <div className="container mx-auto max-w-6xl text-center">
-                <h2 className="text-4xl font-bold mb-12 text-blue-600 dark:text-blue-400">My Skills</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <section id="skills" className="skill-section">
+            <div className="skills-container">
+                <h2 className="skills-heading">My Skills</h2>
+                <div className="skills-grid">
                     {skills.map((skill, index) => (
                         <SkillCard key={index} skill={skill} />
                     ))}
@@ -31,10 +31,10 @@ const SkillsSection = () => {
 
 // Skill Card Component
 const SkillCard = ({ skill }: any) => (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
-        <img width="15%" src={skill.icon} alt={skill.name} className="max-w-[15%] mb-4" />
-        <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{skill.name}</h3>
-        <p className="text-md text-gray-600 dark:text-gray-400">{skill.level}</p>
+    <div className="skill-card">
+        <img width="20%" src={skill.icon} alt={skill.name} className="skill-icon" />
+        <h3 className="skill-name">{skill.name}</h3>
+        <p className="skill-level">{skill.level}</p>
     </div>
 );
 

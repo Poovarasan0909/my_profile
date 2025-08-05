@@ -1,11 +1,11 @@
 ﻿"use client"
 
 import React, { useState, useEffect } from 'react';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import SkillsSection from './components/SkillsSection';
-import ProjectsSection from './components/ProjectsSection';
-import ContactSection from './components/ContactSection';
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import SkillsSection from '../components/SkillsSection';
+import ProjectsSection from '../components/ProjectsSection';
+import ContactSection from '../components/ContactSection';
 
 // Lucide React icons
 import { Home, User, Code, Folder, Mail, Sun, Moon } from 'lucide-react'; 
@@ -51,19 +51,19 @@ const App = () => {
     };
         
     return (
-        <div className={`min-h-screen font-inter ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-800'}`}>
+        <div className={`main-container`}>
             {/* Dark Mode Toggle */}
             <button
                 onClick={toggleDarkMode}
-                className="fixed top-4 right-4 p-3 rounded-full shadow-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 z-50 transition-all duration-300 hover:scale-105"
+                className="dark-mode-toggle"
                 aria-label="Toggle dark mode"
             >
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
 
             {/* Sidebar Navigation */}
-            <nav className="fixed left-0 top-0 h-full w-20 bg-white dark:bg-gray-800 shadow-lg flex flex-col items-center justify-center py-8 z-40 rounded-r-2xl">
-                <div className="flex flex-col space-y-8">
+            <nav className="sidebar">
+                <div className="sidebar-items">
                     <NavItem icon={<Home size={24} />} label="Home" sectionId="home" activeSection={activeSection} onClick={scrollToSection} />
                     <NavItem icon={<User size={24} />} label="About" sectionId="about" activeSection={activeSection} onClick={scrollToSection} />
                     <NavItem icon={<Code size={24} />} label="Skills" sectionId="skills" activeSection={activeSection} onClick={scrollToSection} />
@@ -73,7 +73,7 @@ const App = () => {
             </nav>
 
             {/* Main Content Area */}
-            <main className="ml-20 p-8">
+            <main className="content-area">
                 <HeroSection darkMode={darkMode} />
                 <AboutSection />
                 <SkillsSection />
@@ -95,13 +95,11 @@ interface NavItemProps {
 const NavItem = ({ icon, label, sectionId, activeSection, onClick }: NavItemProps) => (
     <button
         onClick={() => onClick(sectionId)}
-        className={`relative flex items-center justify-center p-3 rounded-full transition-all duration-300 group
-      ${activeSection === sectionId ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'}
-      hover:scale-110`}
+        className={`nav-button ${activeSection === sectionId ? 'active' : 'inactive'}`}
         aria-label={label}
     >
         {icon}
-        <span className="absolute left-full ml-4 px-3 py-1 bg-gray-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <span className="nav-button-label">
             {label}
         </span>
     </button>

@@ -38,42 +38,42 @@ const HeroSection = ({ darkMode }: { darkMode: boolean }) => {
     };
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center p-8 overflow-hidden">
+        <section id="home" className="home-section">
             <motion.div
-                className="text-center max-w-4xl"
+                style={{ textAlign: 'center', maxWidth: '56rem' }}
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
                 id="test1234"
             >
                 <motion.img
-                    src="/profile-image.jpg" // Placeholder for your profile picture
+                    src="/profile-image.jpg" 
                     alt="Profile"
                     id="profile-picture-logo"
-                    className="w-36 h-36 rounded-full mx-auto mb-6 shadow-xl border-4 border-blue-500 dark:border-blue-400"
+                    className="profile-image"
                     variants={itemVariants}
                 />
                 <motion.h1
-                    className="text-5xl font-extrabold mb-4 leading-tight"
+                    className="hero-heading"
                     variants={itemVariants}
                     
                 >
-                    Hi, I'm <span className="text-blue-600 dark:text-blue-400">{name}</span>
+                    Hi, I'm <span className="hero-name-highlight">{name}</span>
                 </motion.h1>
                 <motion.p
-                    className={`text-xl ${darkMode ?'text-gray-300' :'text-gray-700'} mb-8 max-w-2xl mx-auto`}
+                    className={`hero-text hero-text-large`}
                     variants={itemVariants}
                 >
-                    A passionate <span className="font-semibold">{title}</span> building modern and responsive web applications with a focus on user experience.
+                    A passionate <span className="text-highlight">{title}</span> building modern and responsive web applications with a focus on user experience.
                 </motion.p>
                 <motion.p
-                    className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-8 max-w-2xl mx-auto`}
+                    className={`hero-text hero-text-small`}
                     variants={itemVariants}
                 >
                     {summary}
                 </motion.p>
                 <motion.div
-                    className="flex justify-center space-x-6 flex-wrap gap-4"
+                    className="hero-social-links"
                     variants={itemVariants}
                 >
                     <SocialLink icon={<Linkedin size={24} />} href="https://linkedin.com/in/poovarasan-m-50341b20b" label="LinkedIn" />
@@ -83,12 +83,12 @@ const HeroSection = ({ darkMode }: { darkMode: boolean }) => {
                         href={resumeLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300 font-semibold text-lg"
+                        className="resume-button"
                         variants={buttonVariants}
                         whileHover="hover"
                         whileTap="tap"
                     >
-                        <FileText size={20} className="mr-2" /> View Resume
+                        <FileText size={20} className="resume-button-icon" /> View Resume
                     </motion.a>
                 </motion.div>
             </motion.div>
@@ -103,7 +103,7 @@ const SocialLink = ({ icon, href, label }: any) => (
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-3 rounded-full bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 shadow-md hover:bg-blue-500 hover:text-white dark:hover:bg-blue-600 transition-all duration-300 hover:scale-110"
+        className="social-link-button"
         aria-label={label}
     >
         {icon}
