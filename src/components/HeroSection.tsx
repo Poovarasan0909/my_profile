@@ -1,15 +1,12 @@
 
 import { easeInOut, motion } from 'framer-motion';
 import { Linkedin, Github, FileText } from 'lucide-react'; // Added FileText icon
+import { portfolioData } from '@/data/portfolio';
 
 const HeroSection = () => {
-    // Data extracted from Poovarasan's resume
-    const name = "Poovarasan";
-    const title = "Full Stack Developer | Java | Spring Boot | React.js | TypeScript | PostgreSQL";
-    const summary = "Full Stack Developer with 2.6 years of experience in developing, designing and deploying scalable web applications. Proficient in frontend and backend technologies including Java, Spring Boot, React.js, TypeScript, and PostgreSQL. Skilled in building robust admin interfaces using React-Admin. Contributed to fintech and AI-based projects, particularly in the Merchant Cash Advance (MCA) domain, improving financial workflows and overall system performance. Passionate about clean code, performance optimization, and business-driven development.";
-    const resumeLink = "/Poovarasan_Resume_cv.pdf"; // Placeholder: Replace with the actual path to your resume PDF
+    const { name, title, summary, resumeLink, socialLinks } = portfolioData;
 
-    // Framer Motion variants for animations
+     // Framer Motion variants for animations
     const containerVariants = {
         hidden: { opacity: 0, y: 50 },
         visible: {
@@ -76,8 +73,8 @@ const HeroSection = () => {
                     className="hero-social-links"
                     variants={itemVariants}
                 >
-                    <SocialLink icon={<Linkedin size={24} />} href="https://linkedin.com/in/poovarasan-m-50341b20b" label="LinkedIn" />
-                    <SocialLink icon={<Github size={24} />} href="https://github.com/Poovarasan0909" label="GitHub" />
+                    <SocialLink icon={<Linkedin size={24} />} href={socialLinks.linkedin} label="LinkedIn" />
+                    <SocialLink icon={<Github size={24} />} href={socialLinks.github} label="GitHub" />
                     {/* Removed Twitter as it wasn't in the provided resume */}
                     <motion.a
                         href={resumeLink}
