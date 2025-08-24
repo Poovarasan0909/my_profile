@@ -17,11 +17,15 @@ body {
     margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 .main-container {
     min-height: 100vh;
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Fira Code', monospace;
     background-color: #f9fafb; 
     color: #1f2937; 
+
 }
 
 .dark-mode-toggle {
@@ -799,6 +803,9 @@ color: #e5e7eb;
     }
     .hero-text-container {
         width: 100%;
+    }
+    .hero-heading {
+        margin-top: 1rem;
     }
     .profile-image-mobile-container {
         display: block;

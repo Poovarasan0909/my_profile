@@ -12,6 +12,7 @@ import { useTheme } from "@/components/ThemeProvider";
 
 // Lucide React icons
 import { Home, User, Code, Folder, Mail, Sun, Moon } from 'lucide-react'; 
+import AnimatedSection from '@/components/AnimationSection';
 
 // Main App Component
 const App = () => {
@@ -74,7 +75,9 @@ const App = () => {
             {/* Main Content Area */}
             <main className="content-area">
                 <HeroSection/>
+                <AnimatedSection>
                 <AboutSection />
+                </AnimatedSection>
                 <SkillsSection />
                 <ProjectsSection />
                 <ContactSection />
