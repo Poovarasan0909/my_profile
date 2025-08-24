@@ -1,15 +1,12 @@
 
 import { easeInOut, motion } from 'framer-motion';
 import { Linkedin, Github, FileText } from 'lucide-react'; // Added FileText icon
+import { portfolioData } from '@/data/portfolio';
 
 const HeroSection = () => {
-    // Data extracted from Poovarasan's resume
-    const name = "Poovarasan";
-    const title = "Full Stack Developer | Java | Spring Boot | React.js | TypeScript | PostgreSQL";
-    const summary = "Full Stack Developer with 2.6 years of experience in developing, designing and deploying scalable web applications. Proficient in frontend and backend technologies including Java, Spring Boot, React.js, TypeScript, and PostgreSQL. Skilled in building robust admin interfaces using React-Admin. Contributed to fintech and AI-based projects, particularly in the Merchant Cash Advance (MCA) domain, improving financial workflows and overall system performance. Passionate about clean code, performance optimization, and business-driven development.";
-    const resumeLink = "/Poovarasan_Resume_cv.pdf"; // Placeholder: Replace with the actual path to your resume PDF
+    const { name, title, summary, resumeLink } = portfolioData;
 
-    // Framer Motion variants for animations
+     // Framer Motion variants for animations
     const containerVariants = {
         hidden: { opacity: 0, y: 50 },
         visible: {
@@ -39,6 +36,15 @@ const HeroSection = () => {
 
     return (
         <section id="home" className="home-section">
+             <motion.div className='profile-image-mobile-container'>
+                    <motion.img
+                        src="/profile-image.jpg"
+                        alt="Profile"
+                        id="profile-picture-logo"
+                        className="profile-image"
+                        variants={itemVariants}
+                    />
+                </motion.div>
             <motion.div
                 style={{ textAlign: 'left', width: '100%', display: 'flex' }}
                 variants={containerVariants}
@@ -46,11 +52,11 @@ const HeroSection = () => {
                 animate="visible"
                 id="test1234"
             >
-                <motion.div style={{width: '60%'}}>
+            
+                <motion.div className='hero-text-container'>
                     <motion.h1
                         className="hero-heading"
                         variants={itemVariants}
-
                     >
                         Hi, I'm <span className="hero-name-highlight">{name}</span>
                     </motion.h1>
@@ -86,7 +92,7 @@ const HeroSection = () => {
                         </motion.a>
                     </motion.div>
                 </motion.div>
-                <motion.div style={{ alignContent: 'center', width: '40%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <motion.div className="profile-image-container">
                     <motion.img
                         src="/profile-image.jpg"
                         alt="Profile"

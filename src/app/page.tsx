@@ -6,7 +6,9 @@ import AboutSection from '../components/AboutSection';
 import SkillsSection from '../components/SkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
+import NavItem from '../components/NavItem';
 import { useTheme } from "@/components/ThemeProvider";
+
 
 // Lucide React icons
 import { Home, User, Code, Folder, Mail, Sun, Moon } from 'lucide-react'; 
@@ -80,26 +82,5 @@ const App = () => {
         </div>
     );
 };
-
-interface NavItemProps {
-    icon: React.ReactNode;
-    label: string;
-    sectionId: string;
-    activeSection: string;
-    onClick: (id: string) => void;
-}
-// Navigation Item Component
-const NavItem = ({ icon, label, sectionId, activeSection, onClick }: NavItemProps) => (
-    <button
-        onClick={() => onClick(sectionId)}
-        className={`nav-button ${activeSection === sectionId ? 'active' : 'inactive'}`}
-        aria-label={label}
-    >
-        {icon}
-        <span className="nav-button-label">
-            {label}
-        </span>
-    </button>
-);
 
 export default App;

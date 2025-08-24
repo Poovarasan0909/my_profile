@@ -31,10 +31,12 @@ const SkillsSection = () => {
 
 // Skill Card Component
 const SkillCard = ({ skill }: any) => (
-    <div className="skill-card">
+    <div className="skill-card" style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
         <img width="20%" src={skill.icon} alt={skill.name} className="skill-icon" />
-        <h3 className="skill-name">{skill.name}</h3>
-        <p className="skill-level">{skill.level}</p>
+        <div style={{marginLeft: '.6rem'}}>
+            <h3 className="skill-name">{skill.name}</h3>
+            <p className="skill-level">{skill.level}</p>
+        </div>
     </div>
 );
 
