@@ -6,14 +6,14 @@ import AboutSection from '../components/AboutSection';
 import SkillsSection from '../components/SkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
+import { useTheme } from "@/components/ThemeProvider";
 
 // Lucide React icons
 import { Home, User, Code, Folder, Mail, Sun, Moon } from 'lucide-react'; 
 
 // Main App Component
 const App = () => {
-    const [activeSection, setActiveSection] = useState('home');
-    const [darkMode, setDarkMode] = useState(true);
+    const [activeSection, setActiveSection] = useState('home'); 
 
     // Smooth scroll to section
     const scrollToSection = (sectionId: any) => {
@@ -44,21 +44,18 @@ const App = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Toggle dark mode
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
-        document.documentElement.classList.toggle('dark');
-    };
-        
+
+    const { theme, toggleTheme } = useTheme();
+
     return (
         <div className={`main-container`}>
             {/* Dark Mode Toggle */}
             <button
-                onClick={toggleDarkMode}
+                onClick={toggleTheme}
                 className="dark-mode-toggle"
                 aria-label="Toggle dark mode"
             >
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
 
             {/* Sidebar Navigation */}
