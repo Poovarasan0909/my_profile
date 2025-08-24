@@ -1,7 +1,9 @@
-    import type { Metadata } from "next";
-    import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import {ThemeProvider} from "../components/ThemeProvider";
 
     const geistSans = Geist({
       variable: "--font-geist-sans",
@@ -16,20 +18,22 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
     export const metadata: Metadata = {
       title: "Poovarasan Portfolio",
       description: "I am",
-    };
+};
 
     export default function RootLayout({
       children,
     }: Readonly<{
       children: React.ReactNode;
     }>) {
-      return (
-          <html lang="en">
+        return (
+            <html lang="en" className="dark">
           <body
                   className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning
               >
                   <AppRouterCacheProvider>
-                      {children}
+                      <ThemeProvider>
+                          {children}
+                      </ThemeProvider>
                   </AppRouterCacheProvider>
           </body>
         </html>

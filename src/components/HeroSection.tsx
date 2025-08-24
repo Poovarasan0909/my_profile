@@ -37,56 +37,60 @@ const HeroSection = () => {
     return (
         <section id="home" className="home-section">
             <motion.div
-                style={{ textAlign: 'center', maxWidth: '56rem' }}
+                style={{ textAlign: 'left', width: '100%', display: 'flex' }}
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
                 id="test1234"
             >
-                <motion.img
-                    src="/profile-image.jpg" 
-                    alt="Profile"
-                    id="profile-picture-logo"
-                    className="profile-image"
-                    variants={itemVariants}
-                />
-                <motion.h1
-                    className="hero-heading"
-                    variants={itemVariants}
-                    
-                >
-                    Hi, I'm <span className="hero-name-highlight">{name}</span>
-                </motion.h1>
-                <motion.p
-                    className={`hero-text hero-text-large`}
-                    variants={itemVariants}
-                >
-                    A passionate <span className="text-highlight">{title}</span> building modern and responsive web applications with a focus on user experience.
-                </motion.p>
-                <motion.p
-                    className={`hero-text hero-text-small`}
-                    variants={itemVariants}
-                >
-                    {summary}
-                </motion.p>
-                <motion.div
-                    className="hero-social-links"
-                    variants={itemVariants}
-                >
-                    <SocialLink icon={<Linkedin size={24} />} href={socialLinks.linkedin} label="LinkedIn" />
-                    <SocialLink icon={<Github size={24} />} href={socialLinks.github} label="GitHub" />
-                    {/* Removed Twitter as it wasn't in the provided resume */}
-                    <motion.a
-                        href={resumeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="resume-button"
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
+
+                <motion.div style={{width: '60%'}}>
+                    <motion.h1
+                        className="hero-heading"
+                        variants={itemVariants}
                     >
-                        <FileText size={20} className="resume-button-icon" /> View Resume
-                    </motion.a>
+                        Hi, I'm <span className="hero-name-highlight">{name}</span>
+                    </motion.h1>
+                    <motion.p
+                        className={`hero-text hero-text-large`}
+                        variants={itemVariants}
+                    >
+                        A passionate <span className="text-highlight">{title}</span> building modern and responsive web applications with a focus on user experience.
+                    </motion.p>
+                    <motion.p
+                        className={`hero-text hero-text-small`}
+                        variants={itemVariants}
+                    >
+                        {summary}
+                    </motion.p>
+                    <motion.div
+                        className="hero-social-links"
+                        variants={itemVariants}
+                    >
+                        <SocialLink icon={<Linkedin size={24} />} href="https://linkedin.com/in/poovarasan-m-50341b20b" label="LinkedIn" />
+                        <SocialLink icon={<Github size={24} />} href="https://github.com/Poovarasan0909" label="GitHub" />
+                        {/* Removed Twitter as it wasn't in the provided resume */}
+                        <motion.a
+                            href={resumeLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="resume-button"
+                            variants={buttonVariants}
+                            whileHover="hover"
+                            whileTap="tap"
+                        >
+                            <FileText size={20} className="resume-button-icon" /> View Resume
+                        </motion.a>
+                    </motion.div>
+                </motion.div>
+                <motion.div style={{ alignContent: 'center', width: '40%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <motion.img
+                        src="/profile-image.jpg"
+                        alt="Profile"
+                        id="profile-picture-logo"
+                        className="profile-image"
+                        variants={itemVariants}
+                    />
                 </motion.div>
             </motion.div>
         </section>
