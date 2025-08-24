@@ -155,6 +155,7 @@ body {
     font-weight: 800;
     margin-bottom: 1rem;
     line-height: 1.25;
+    margin: 0;
 }
 .hero-name-highlight {
     color: #2563eb;
