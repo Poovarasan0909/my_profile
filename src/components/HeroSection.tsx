@@ -4,7 +4,7 @@ import { Linkedin, Github, FileText } from 'lucide-react'; // Added FileText ico
 import { portfolioData } from '@/data/portfolio';
 
 const HeroSection = () => {
-    const { name, title, summary, resumeLink, socialLinks } = portfolioData;
+    const { name, title, summary, resumeLink } = portfolioData;
 
      // Framer Motion variants for animations
     const containerVariants = {
@@ -36,6 +36,15 @@ const HeroSection = () => {
 
     return (
         <section id="home" className="home-section">
+             <motion.div className='profile-image-mobile-container'>
+                    <motion.img
+                        src="/profile-image.jpg"
+                        alt="Profile"
+                        id="profile-picture-logo"
+                        className="profile-image"
+                        variants={itemVariants}
+                    />
+                </motion.div>
             <motion.div
                 style={{ textAlign: 'left', width: '100%', display: 'flex' }}
                 variants={containerVariants}
@@ -43,8 +52,8 @@ const HeroSection = () => {
                 animate="visible"
                 id="test1234"
             >
-
-                <motion.div style={{width: '60%'}}>
+            
+                <motion.div className='hero-text-container'>
                     <motion.h1
                         className="hero-heading"
                         variants={itemVariants}
@@ -83,7 +92,7 @@ const HeroSection = () => {
                         </motion.a>
                     </motion.div>
                 </motion.div>
-                <motion.div style={{ alignContent: 'center', width: '40%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <motion.div className="profile-image-container">
                     <motion.img
                         src="/profile-image.jpg"
                         alt="Profile"
