@@ -2,6 +2,7 @@
 import { easeInOut, motion } from 'framer-motion';
 import { Linkedin, Github, FileText } from 'lucide-react'; // Added FileText icon
 import { portfolioData } from '@/data/portfolio';
+import Magnetic from './Magnetic';
 
 const HeroSection = () => {
     const { name, title, summary, resumeLink } = portfolioData;
@@ -76,30 +77,34 @@ const HeroSection = () => {
                         className="hero-social-links"
                         variants={itemVariants}
                     >
-                        <SocialLink icon={<Linkedin size={24} />} href="https://linkedin.com/in/poovarasan-m-50341b20b" label="LinkedIn" />
-                        <SocialLink icon={<Github size={24} />} href="https://github.com/Poovarasan0909" label="GitHub" />
+                        <Magnetic><SocialLink icon={<Linkedin size={24} />} href="https://linkedin.com/in/poovarasan-m-50341b20b" label="LinkedIn" /></Magnetic>
+                        <Magnetic><SocialLink icon={<Github size={24} />} href="https://github.com/Poovarasan0909" label="GitHub" /></Magnetic>
                         {/* Removed Twitter as it wasn't in the provided resume */}
-                        <motion.a
-                            href={resumeLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="resume-button"
-                            variants={buttonVariants}
-                            whileHover="hover"
-                            whileTap="tap"
-                        >
-                            <FileText size={20} className="resume-button-icon" /> View Resume
-                        </motion.a>
+                        <Magnetic>
+                            <motion.a
+                                href={resumeLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="resume-button"
+                                variants={buttonVariants}
+                                whileHover="hover"
+                                whileTap="tap"
+                            >
+                                <FileText size={20} className="resume-button-icon" /> View Resume
+                            </motion.a>
+                        </Magnetic>
                     </motion.div>
                 </motion.div>
                 <motion.div className="profile-image-container">
-                    <motion.img
-                        src="/profile-image.jpg"
-                        alt="Profile"
-                        id="profile-picture-logo"
-                        className="profile-image"
-                        variants={itemVariants}
-                    />
+                    <Magnetic>
+                        <motion.img
+                            src="/profile-image.jpg"
+                            alt="Profile"
+                            id="profile-picture-logo"
+                            className="profile-image"
+                            variants={itemVariants}
+                        />
+                    </Magnetic>
                 </motion.div>
             </motion.div>
         </section>

@@ -13,6 +13,8 @@ import { useTheme } from "@/components/ThemeProvider";
 // Lucide React icons
 import { Home, User, Code, Folder, Mail, Sun, Moon } from 'lucide-react'; 
 import AnimatedSection from '@/components/AnimationSection';
+import Magnetic from '@/components/Magnetic';
+import AIChatBot from '@/components/AIChatbot';
 
 // Main App Component
 const App = () => {
@@ -60,15 +62,26 @@ const App = () => {
             >
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
+            <AIChatBot/>
 
             {/* Sidebar Navigation */}
             <nav className="sidebar">
                 <div className="sidebar-items">
-                    <NavItem icon={<Home size={24} />} label="Home" sectionId="home" activeSection={activeSection} onClick={scrollToSection} />
-                    <NavItem icon={<User size={24} />} label="About" sectionId="about" activeSection={activeSection} onClick={scrollToSection} />
-                    <NavItem icon={<Code size={24} />} label="Skills" sectionId="skills" activeSection={activeSection} onClick={scrollToSection} />
-                    <NavItem icon={<Folder size={24} />} label="Projects" sectionId="projects" activeSection={activeSection} onClick={scrollToSection} />
-                    <NavItem icon={<Mail size={24} />} label="Contact" sectionId="contact" activeSection={activeSection} onClick={scrollToSection} />
+                    <Magnetic>
+                        <NavItem icon={<Home size={24} />} label="Home" sectionId="home" activeSection={activeSection} onClick={scrollToSection} />
+                    </Magnetic>
+                    <Magnetic>
+                        <NavItem icon={<User size={24} />} label="About" sectionId="about" activeSection={activeSection} onClick={scrollToSection} />
+                    </Magnetic>
+                    <Magnetic>
+                        <NavItem icon={<Code size={24} />} label="Skills" sectionId="skills" activeSection={activeSection} onClick={scrollToSection} />
+                    </Magnetic>
+                    <Magnetic>
+                        <NavItem icon={<Folder size={24} />} label="Projects" sectionId="projects" activeSection={activeSection} onClick={scrollToSection} />
+                    </Magnetic>
+                    <Magnetic>
+                        <NavItem icon={<Mail size={24} />} label="Contact" sectionId="contact" activeSection={activeSection} onClick={scrollToSection} />
+                    </Magnetic>
                 </div>
             </nav>
 
