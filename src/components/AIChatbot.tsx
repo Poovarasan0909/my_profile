@@ -14,7 +14,7 @@ const AIChatBot = () => {
     const lastMessageRef = useRef<HTMLDivElement>(null);
     const [aiConversations, setAIConversations] = useState<Array<{ role: string; content?: string; error?: string | undefined }>>([]);
     const [isAIThinking, setIsAIThinking] = useState(false);
-    const [isShowChatBot, setIsShowChatBot] = useState(true);
+    const [isShowChatBot, setIsShowChatBot] = useState(false);
 
      useEffect(() => {
         lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
