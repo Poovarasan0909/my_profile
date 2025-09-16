@@ -2,9 +2,10 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import { Send } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import  {postRequest} from '../helper/helper';
+import  {convertToHTML, postRequest} from '../helper/helper';
 import AiLauncher from './AiLauncher';
 import React from 'react';
+import { v4 as uuidv4 } from "uuid";
 import '../css/AIChatbot.css';
 
 
@@ -90,14 +91,14 @@ const AIChatBot = () => {
                         </div>
                     </div>
                 )}
-                 <canvas id="particle-canvas"></canvas>
+                 {/* <canvas id="particle-canvas"></canvas> */}
                 <div className="ai-chatbot-messages">
                     {aiConversations.map((conv, index) => (
                         <React.Fragment key={index}>
                             <div key={index} ref={index === aiConversations.length - 1 ? lastMessageRef : null}
                                 className={`ai-chatbot-message ${conv.role} ${conv.error ? 'error' : ''}`}>
                                 {conv.error ? <span>⚠️{conv.error}</span> :
-                                    <span>{conv.content}</span>}
+                                    <div dangerouslySetInnerHTML={{ __html: convertToHTML(conv.content) }} />}
                             </div>
                             {isAIThinking && index === aiConversations.length - 1 && (
                                 <div className="ai-chatbot-typing-indicator">AI is typing...</div>

@@ -6,7 +6,7 @@
     bottom: 0.80rem;
     right: 0.80rem;
     z-index: 1000;
-    width: 35%;
+    width: 50%;
     height: 80%;
     background-color: #07111a;
     border-radius: 2%;
@@ -23,6 +23,7 @@
    bottom: 0.10rem;
    right: 0.20rem;
    width: 100%;
+   z-index: 2001;
 }
 .ai-prompt-input {
     flex: 1;
@@ -79,7 +80,7 @@
 }
 .ai-chatbot-message.model {
     align-self: flex-start;
-    background-color: #1e40af; 
+    background-color: #152147bf; 
     color: white;
 }
 .ai-chatbot-message.error {
@@ -107,7 +108,7 @@
     top: 0;
     left: 0;
     color: white;
-    z-index: 1001;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
