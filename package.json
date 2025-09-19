@@ -24,7 +24,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "three": "^0.178.0",
-    "threejs-toys": "^0.0.8"
+    "threejs-toys": "^0.0.8",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.13",
