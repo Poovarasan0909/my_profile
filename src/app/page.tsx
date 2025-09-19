@@ -1,6 +1,6 @@
 ﻿"use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
 import SkillsSection from '../components/SkillsSection';
@@ -15,6 +15,7 @@ import { Home, User, Code, Folder, Mail, Sun, Moon } from 'lucide-react';
 import AnimatedSection from '@/components/AnimationSection';
 import Magnetic from '@/components/Magnetic';
 import AIChatBot from '@/components/AIChatbot';
+import { v4 as uuidv4 } from "uuid";
 
 // Main App Component
 const App = () => {
@@ -43,6 +44,9 @@ const App = () => {
                     }
                 }
             }
+        }
+        if (!sessionStorage.getItem("sessionID")) {
+            sessionStorage.setItem("sessionID", uuidv4());
         }
 
         window.addEventListener('scroll', handleScroll);
