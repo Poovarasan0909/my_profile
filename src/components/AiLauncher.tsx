@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import "../css/AiLauncher.css"; // Move your CSS into a separate file
 
-export default function AiLauncher({onClickFunction}) {
+export default function AiLauncher({onClickFunction}: {onClickFunction: () => void}) {
   const launcherRef = useRef<HTMLDivElement | null>(null);
   const orbRef = useRef<HTMLDivElement | null>(null);
   const aiTextRef = useRef<HTMLDivElement | null>(null);

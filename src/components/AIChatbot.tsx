@@ -1,4 +1,3 @@
-import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import { Send } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -19,7 +18,7 @@ const AIChatBot = () => {
         if (sessionStorage.getItem("ai-conversations") && aiConversations.length === 0) {
             setAIConversations(JSON.parse(sessionStorage.getItem("ai-conversations") || '[]'));
         }
-    }, []);
+    }, [aiConversations]);
 
      useEffect(() => {
         lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
