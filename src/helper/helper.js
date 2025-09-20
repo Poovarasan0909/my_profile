@@ -3,7 +3,7 @@ export const postRequest = async (url, data) => {
     console.log("API URL:", process.env.NODE_ENV);
     const isdevelopment = process.env.NODE_ENV === 'development';
     if (!isdevelopment) {
-        baseURL = 'https://genai-api.poovarasanm0909.workers.dev/';
+        baseURL = 'https://genai-api.poovarasanm0909.workers.dev';
     }
     const response = await fetch(baseURL + url, {
         method: 'POST',
