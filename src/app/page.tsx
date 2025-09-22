@@ -16,6 +16,7 @@ import AnimatedSection from '@/components/AnimationSection';
 import Magnetic from '@/components/Magnetic';
 import AIChatBot from '@/components/AIChatbot';
 import { v4 as uuidv4 } from "uuid";
+import { detectDeviceType, getBrowerName, getDateFormateYYYYMMDD, postRequest } from '@/helper/helper';
 
 // Main App Component
 const App = () => {
@@ -29,6 +30,30 @@ const App = () => {
             setActiveSection(sectionId);
         }
     };
+
+    if (!sessionStorage.getItem("sessionID")) {
+        sessionStorage.setItem("sessionID", uuidv4());
+    }
+
+    useEffect(() => {
+        const isLogInfoSent = sessionStorage.getItem("isLogInfoSent");
+        if (!isLogInfoSent) {
+          postRequest("/google_sheets_webhook", {
+            logged_at: getDateFormateYYYYMMDD(),
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            platform: navigator.userAgentData?.platform || navigator.platform,
+            browserName: getBrowerName(),
+            screen_size: `Width: ${screen.width} / Height: ${screen.height}`,
+            window_size: `Width: ${window.innerWidth} / Height: ${window.innerHeight}`,
+            deviceType: detectDeviceType(),
+            session_id: sessionStorage.getItem("sessionID") || "",
+          }).then((data) => {
+              sessionStorage.setItem("isLogInfoSent", "true");
+            }).catch((error) => {
+              console.error("Error sending logging info", error);
+            });
+        }
+    }, []);
 
     // Handle scroll to update active section in nav
     useEffect(() => {
@@ -44,9 +69,6 @@ const App = () => {
                     }
                 }
             }
-        }
-        if (!sessionStorage.getItem("sessionID")) {
-            sessionStorage.setItem("sessionID", uuidv4());
         }
 
         window.addEventListener('scroll', handleScroll);

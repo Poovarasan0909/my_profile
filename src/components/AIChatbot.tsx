@@ -5,6 +5,7 @@ import  {convertToHTML, postRequest} from '../helper/helper';
 import AiLauncher from './AiLauncher';
 import React from 'react';
 import '../css/AIChatbot.css';
+import AiCancel from './animations/AiCancel';
 
 
 const AIChatBot = () => {
@@ -85,9 +86,10 @@ const AIChatBot = () => {
     return (
         isShowChatBot ?
             (<Box className="ai-chatbot">
-                <div className="ai-chatbot-cancel" onClick={() => setIsShowChatBot(false)} >
+                {/* <div className="ai-chatbot-cancel" onClick={() => setIsShowChatBot(false)} >
                     X
-                </div>
+                </div> */}
+                <AiCancel onClickFunction={() => setIsShowChatBot(false)}/>
                 {aiConversations.length === 0 && !isAIThinking && (
                     <div className="ai-chatbot-welcome">
                         <h3>👋 Hi, I’m Poovarasan’s AI assistant.</h3>
