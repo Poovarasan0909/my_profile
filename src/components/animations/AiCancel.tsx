@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import "../../css/AiCancel.css";
 
-export default function AiCancel({onClickFunction}) {
-  const launcherRef = useRef(null);
-  const orbRef = useRef(null);
-  const aiTextRef = useRef(null);
+export default function AiCancel({onClickFunction}: {onClickFunction: () => void}) {
+  const launcherRef = useRef<HTMLDivElement>(null);
+  const orbRef = useRef<HTMLDivElement>(null);
+  const aiTextRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function AiCancel({onClickFunction}) {
     // --- 1. 3D Parallax Mouse Movement Effect ---
     const handleMouseMove = (e: MouseEvent) => {
       if (isAnimating) return;
-      const rect = launcher.getBoundingClientRect();
+      const rect = launcher?.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
 

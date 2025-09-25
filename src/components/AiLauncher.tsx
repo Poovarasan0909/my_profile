@@ -68,7 +68,7 @@ export default function AiLauncher({onClickFunction}: {onClickFunction: () => vo
       launcher.removeEventListener("mouseleave", handleMouseLeave);
       launcher.removeEventListener("click", handleClick);
     };
-  }, [isAnimating]);
+  }, [isAnimating, onClickFunction]);
 
   return (
     <div id="ai-launcher" ref={launcherRef} title="Engage AI Assistant">

@@ -78,7 +78,6 @@ export const getBrowerName = () => {
 }
 
 export const detectDeviceType = () => {
-    const height = screen.height
     const width = screen.width
 
     if (width <= 480) {

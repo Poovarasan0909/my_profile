@@ -31,25 +31,28 @@ const App = () => {
         }
     };
 
-    if (!sessionStorage.getItem("sessionID")) {
-        sessionStorage.setItem("sessionID", uuidv4());
-    }
 
     useEffect(() => {
+        const sessionData = window !== undefined ? sessionStorage : null;
+        if (sessionData && !sessionStorage.getItem("sessionID")) {
+            sessionStorage.setItem("sessionID", uuidv4());
+        }
         const isLogInfoSent = sessionStorage.getItem("isLogInfoSent");
+        const uaData = (navigator as any).userAgentData;
+        const platform = uaData?.platform || navigator.platform;
         if (!isLogInfoSent) {
          try {
            postRequest("/google_sheets_webhook", {
              logged_at: getDateFormateYYYYMMDD(),
              timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-             platform: navigator.userAgentData?.platform || navigator.platform,
+             platform: platform,
              browserName: getBrowerName(),
              screen_size: `Width: ${screen.width} / Height: ${screen.height}`,
              window_size: `Width: ${window.innerWidth} / Height: ${window.innerHeight}`,
              deviceType: detectDeviceType(),
              session_id: sessionStorage.getItem("sessionID") || "",
            })
-             .then((data) => {
+             .then(() => {
                sessionStorage.setItem("isLogInfoSent", "true");
              })
              .catch((error) => {
