@@ -86,9 +86,6 @@ const AIChatBot = () => {
     return (
         isShowChatBot ?
             (<Box className="ai-chatbot">
-                {/* <div className="ai-chatbot-cancel" onClick={() => setIsShowChatBot(false)} >
-                    X
-                </div> */}
                 <AiCancel onClickFunction={() => setIsShowChatBot(false)}/>
                 {aiConversations.length === 0 && !isAIThinking && (
                     <div className="ai-chatbot-welcome">

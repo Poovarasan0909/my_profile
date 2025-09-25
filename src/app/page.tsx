@@ -38,20 +38,26 @@ const App = () => {
     useEffect(() => {
         const isLogInfoSent = sessionStorage.getItem("isLogInfoSent");
         if (!isLogInfoSent) {
-          postRequest("/google_sheets_webhook", {
-            logged_at: getDateFormateYYYYMMDD(),
-            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-            platform: navigator.userAgentData?.platform || navigator.platform,
-            browserName: getBrowerName(),
-            screen_size: `Width: ${screen.width} / Height: ${screen.height}`,
-            window_size: `Width: ${window.innerWidth} / Height: ${window.innerHeight}`,
-            deviceType: detectDeviceType(),
-            session_id: sessionStorage.getItem("sessionID") || "",
-          }).then((data) => {
-              sessionStorage.setItem("isLogInfoSent", "true");
-            }).catch((error) => {
-              console.error("Error sending logging info", error);
-            });
+         try {
+           postRequest("/google_sheets_webhook", {
+             logged_at: getDateFormateYYYYMMDD(),
+             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+             platform: navigator.userAgentData?.platform || navigator.platform,
+             browserName: getBrowerName(),
+             screen_size: `Width: ${screen.width} / Height: ${screen.height}`,
+             window_size: `Width: ${window.innerWidth} / Height: ${window.innerHeight}`,
+             deviceType: detectDeviceType(),
+             session_id: sessionStorage.getItem("sessionID") || "",
+           })
+             .then((data) => {
+               sessionStorage.setItem("isLogInfoSent", "true");
+             })
+             .catch((error) => {
+               console.error("Error sending logging info", error);
+             });
+         } catch (err) {
+           console.error("Error in logging info", err);
+         }
         }
     }, []);
 

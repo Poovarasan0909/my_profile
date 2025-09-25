@@ -128,3 +128,14 @@
         opacity: 0;
     }
 }
+
+/*--------------------------------------- Responsive Styles ----------------------------------------------*/
+
+@media (max-width: 768px) {
+  #ai-launcher {
+    bottom: 80px;
+    right: 20px;
+    width: 70px;
+    height: 70px;
+  }
+}
