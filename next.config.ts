@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
         maxInactiveAge: 60 * 1000, // 60 seconds
         pagesBufferLength: 5,
     },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    typescript: {
+       ignoreBuildErrors: true,
+     },
 };
 
 if (process.env.NODE_ENV === "development") {

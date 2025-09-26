@@ -40,3 +40,57 @@ export const convertToHTML = (text) => {
     return html;
 
 }
+
+export const getDateFormateYYYYMMDD  = () => { 
+    let yyyy = new Date().getFullYear();
+    let mm = String(new Date().getMonth() + 1).padStart(2, '0');
+    let dd = String(new Date().getDate()).padStart(2, '0');
+
+    let hh = new Date().getHours();
+    let min = String(new Date().getMinutes()).padStart(2, '0');
+    let ss = String(new Date().getSeconds()).padStart(2, '0');
+    let ampm = hh >= 12 ? 'PM' : 'AM';
+    hh = hh % 12;
+    hh = hh ? hh : 12; // the hour '0' should be '12'
+    let strTime = `${String(hh).padStart(2, '0')}:${min}:${ss} ${ampm}`;
+    let localDateTime = `${yyyy}-${mm}-${dd} ${strTime}`;
+    return localDateTime;
+}
+
+export const getBrowerName = () => {
+    let userAgent = navigator.userAgent;
+    let browserName;
+
+    if(userAgent.includes("Chrome") && !userAgent.includes("Edg")) { 
+        browserName = "Chrome";
+    } else if ( userAgent.includes("Firefox")) {
+        browserName = "Firefox";
+    } else if( userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
+        browserName = "Safari";
+    } else if(userAgent.includes("Edg")) {
+        browserName = "Edge";
+    } else if(userAgent.includes("Opera") || userAgent.includes("OPR")) {
+        browserName = "Opera";
+    } else {
+        browserName = "Unknown";
+    }
+    return browserName;
+}
+
+export const detectDeviceType = () => {
+    const width = screen.width
+
+    if (width <= 480) {
+        return "Mobile"
+    } else if(width > 480 && width <= 768) {
+        return "Tablet / Foldable Mobile"
+    } else if(width > 768 && width <= 1366) {
+        return "Laptop"
+    } else if(width > 1366 && width <= 1920) {
+        return "Desktop"
+    } else if(width > 1920) {
+        return "Projector / Large Screen"
+    } else {
+        return "Unknown"
+    }
+}

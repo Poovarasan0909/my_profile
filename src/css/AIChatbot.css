@@ -148,3 +148,11 @@
     background-color: rgba(99, 110, 138, 0.4);
     border-color: #7a7a7a;
 }
+
+/* -------------------------------------------Mobile View---------------------------------------------- */
+@media (max-width: 768px) {
+    .ai-chatbot {
+        width: 90%;
+        height: 70%;
+    }
+}

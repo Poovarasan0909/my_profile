@@ -1,11 +1,10 @@
-"use client";
 import { useEffect, useRef, useState } from "react";
-import "../css/AiLauncher.css"; // Move your CSS into a separate file
+import "../../css/AiCancel.css";
 
-export default function AiLauncher({onClickFunction}: {onClickFunction: () => void}) {
-  const launcherRef = useRef<HTMLDivElement | null>(null);
-  const orbRef = useRef<HTMLDivElement | null>(null);
-  const aiTextRef = useRef<HTMLDivElement | null>(null);
+export default function AiCancel({onClickFunction}: {onClickFunction: () => void}) {
+  const launcherRef = useRef<HTMLDivElement>(null);
+  const orbRef = useRef<HTMLDivElement>(null);
+  const aiTextRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -18,7 +17,7 @@ export default function AiLauncher({onClickFunction}: {onClickFunction: () => vo
     // --- 1. 3D Parallax Mouse Movement Effect ---
     const handleMouseMove = (e: MouseEvent) => {
       if (isAnimating) return;
-      const rect = launcher.getBoundingClientRect();
+      const rect = launcher?.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
 
@@ -68,19 +67,19 @@ export default function AiLauncher({onClickFunction}: {onClickFunction: () => vo
       launcher.removeEventListener("mouseleave", handleMouseLeave);
       launcher.removeEventListener("click", handleClick);
     };
-  }, [isAnimating, onClickFunction]);
+  }, [isAnimating]);
 
   return (
-    <div id="ai-launcher" ref={launcherRef} title="Engage AI Assistant">
-      <div id="ai-core-container">
-        <div id="ai-orb" ref={orbRef}>
-          <div id="ai-text" ref={aiTextRef}>
-            AI
-          </div>
+    <div id="ai-cancel" ref={launcherRef} title="Engage AI Assistant">
+      <div id="ai-core-container-cancel">
+        <div id="ai-orb-cancel" ref={orbRef}>
+          <div id="ai-text-cancel" ref={aiTextRef}>
+            <img src="cancel_img.png" width={30} height={30}/>
+            </div>
         </div>
-        <div className="ring ring-hover ring-1"></div>
-        <div className="ring ring-hover ring-2"></div>
-        <div className="ring ring-activate"></div>
+        <div className="cb-ring cb-ring-hover cb-ring-1"></div>
+        <div className="cb-ring cb-ring-hover cb-ring-2"></div>
+        <div className="cb-ring cb-ring-activate"></div>
       </div>
     </div>
   );

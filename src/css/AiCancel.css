@@ -1,0 +1,146 @@
+:root {
+--cb-bg-color: #0a192f;
+  --cb-primary-text: #ccd6f6;
+  --cb-accent-color: #ff2d26; 
+  --cb-orb-color-1: #3a506b;
+  --cb-orb-color-2: #1c2541;
+  --cb-inset-shadow-color: rgba(0, 0, 0, 0.5);
+}
+ 
+/* .dark {
+  --cb-bg-color: #0a192f;
+  --cb-primary-text: #ccd6f6;
+  --cb-accent-color: #64ffda;
+  --cb-orb-color-1: #3a506b;
+  --cb-orb-color-2: #1c2541;
+  --cb-inset-shadow-color: rgba(0, 0, 0, 0.5);
+} */
+
+
+#ai-cancel {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 2001;
+  perspective: 1000px;
+  transform: scale(1.2);
+  display: flex;
+}
+
+#ai-core-container-cancel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#ai-cancel:hover #ai-core-container-cancel {
+  transform: scale(1.15);
+}
+
+/* Orb styles */
+#ai-orb-cancel {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 35% 35%, var(--cb-orb-color-1), var(--cb-orb-color-2) 70%);
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: inset 0 0 20px var(--cb-inset-shadow-color),
+    0 0 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.1s ease-out, background-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: cb-pulse 4s infinite ease-in-out;
+}
+
+#ai-text-cancel {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--cb-accent-color);
+  text-shadow: 0 0 8px var(--cb-accent-color), 0 0 12px var(--cb-accent-color);
+  transition: transform 0.1s ease-out, color 0.3s ease, text-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Keep the rest of your animations and .cb-ring styles here */
+ /* --- ACTIVATION ANIMATION STYLES --- */
+#ai-cancel.activating #ai-orb-cancel {
+    animation: cb-pulse 4s infinite ease-in-out, cb-activate-flash 0.6s ease;
+}
+#ai-cancel.activating #ai-text-cancel {
+    animation: cb-activate-text-glow 0.6s ease;
+}
+#ai-cancel.activating .cb-ring-activate {
+     animation: cb-emanate 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes cb-pulse {
+    0% { box-shadow: 0 0 10px color-mix(in srgb, var(--cb-accent-color) 20%, transparent), inset 0 0 15px var(--cb-inset-shadow-color); }
+    50% { box-shadow: 0 0 25px color-mix(in srgb, var(--cb-accent-color) 40%, transparent), inset 0 0 20px var(--cb-inset-shadow-color); }
+    100% { box-shadow: 0 0 10px color-mix(in srgb, var(--cb-accent-color) 20%, transparent), inset 0 0 15px var(--cb-inset-shadow-color); }
+}
+
+@keyframes cb-activate-flash {
+    0% { background: radial-gradient(circle at 35% 35%, var(--cb-orb-color-1), var(--cb-orb-color-2) 70%); }
+    50% { background: radial-gradient(circle at 50% 50%, var(--cb-accent-color), var(--cb-orb-color-2) 80%); }
+    100% { background: radial-gradient(circle at 35% 35%, var(--cb-orb-color-1), var(--cb-orb-color-2) 70%); }
+}
+
+@keyframes cb-activate-text-glow {
+    50% { transform: scale(1.2); text-shadow: 0 0 15px var(--cb-accent-color), 0 0 25px var(--cb-accent-color); }
+}
+
+#ai-cancel .cb-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid var(--cb-accent-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+}
+
+#ai-cancel:hover .cb-ring-hover {
+    width: 100%;
+    height: 100%;
+}
+
+#ai-cancel:hover .cb-ring-1 {
+    animation: cb-emanate 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+#ai-cancel:hover .cb-ring-2 {
+    animation: cb-emanate 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s infinite;
+}
+
+@keyframes cb-emanate {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.2);
+        opacity: 0;
+    }
+}
+
+
+/* -------------------------------------------Mobile View---------------------------------------------- */
+@media (max-width: 768px) {
+    .ai-chatbot {
+        width: 90%;
+        height: 70%;
+    }
+    #ai-cancel {
+        left: 0;
+        top: -42px;
+    }
+}
