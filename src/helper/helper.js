@@ -1,6 +1,12 @@
+import CryptoJS from 'crypto-js';
+
 export const postRequest = async (url, data) => {
     const baseURL = 'http://127.0.0.1:8787';
     console.log("API URL:", process.env.NODE_ENV);
+    const secretKey = process.env.NEXT_PUBLIC_REQUEST_SECRET_KEY;
+    // encrypt payload
+    const iv = CryptoJS.lib.WordArray.random(70);
+    const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data), secretKey, { iv : iv }).toString();
     const isdevelopment = process.env.NODE_ENV === 'development';
     if (!isdevelopment) {
         baseURL = 'https://genai-api.poovarasanm0909.workers.dev';
@@ -11,9 +17,18 @@ export const postRequest = async (url, data) => {
             'Content-Type': 'application/json',
             'X-Api-Key': process.env.NEXT_PUBLIC_API_TOKEN
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({ payload: encryptedData, iv: iv.toString() })
     });
-    return response.json();
+    // decrypt response
+    const responseData = await response.json();
+    let decryptedData = {};
+    if(responseData?.response || responseData?.iv) {
+        const responseIV = CryptoJS.enc.Hex.parse(responseData.iv);
+        decryptedData = CryptoJS.AES.decrypt(responseData.response, secretKey, { iv: responseIV }).toString(CryptoJS.enc.Utf8);
+    } else {
+        decryptedData = JSON.stringify(responseData);
+    }
+    return JSON.parse(decryptedData);
 }
 
 export const convertToHTML = (text) => {
